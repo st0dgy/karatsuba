@@ -1,0 +1,3 @@
+﻿  karatsuba1.cpp
+C:\Users\admin\source\repos\karatsuba1\karatsuba1.cpp(33,23): warning C4244: инициализация: преобразование "double" в "__int64", возможна потеря данных
+  karatsuba1.vcxproj -> C:\Users\admin\source\repos\karatsuba1\Debug\karatsuba1.exe
