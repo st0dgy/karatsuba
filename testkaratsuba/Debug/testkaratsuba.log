@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  testkaratsuba.cpp
+C:\Users\admin\source\repos\testkaratsuba\testkaratsuba.cpp(15,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+     Создается библиотека C:\Users\admin\source\repos\karatsuba1\Debug\testkaratsuba.lib и объект C:\Users\admin\source\repos\karatsuba1\Debug\testkaratsuba.exp
+  testkaratsuba.vcxproj -> C:\Users\admin\source\repos\karatsuba1\Debug\testkaratsuba.dll
