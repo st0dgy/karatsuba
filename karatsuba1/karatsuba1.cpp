@@ -7,13 +7,14 @@ using namespace std;
 
 
 
-int getLength(long long value) {
-	int counter = 0;
-	while (value != 0) {
-		counter++;
-		value /= 10;
+int countDigit(long long value)
+{
+	if (value == 0) {
+		return 0;
 	}
-	return counter;
+	else {
+		return countDigit(value / 10) + 1;
+	}
 }
 
 long long multiply(long long x, long long y) {
