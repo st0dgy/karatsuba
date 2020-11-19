@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <math.h>
 #include <Windows.h>
 #include <iostream>
@@ -18,33 +18,35 @@ int countDigit(long long value)
 }
 
 long long multiply(long long x, long long y) {
-	int xLength = getLength(x);
-	int yLength = getLength(y);
+	int xLength = countDigit(x);
+	int yLength = countDigit(y);
 
 	// найбільший із двох довжин
-	int N = (int)(fmax(xLength, yLength));
+	int N = (fmax(xLength, yLength));
 
 	// якщо максимальна довжина досить маленька, швидше просто перемножити два числа
-	if (N < 10)
+	if (N < 10) {
 		return x * y;
+	}
+	else {
 
-	
-	N = (N / 2) + (N % 2);
-	// зсув для десяткової системи числення
-	long long multiplier = pow(10, N);
 
-	long long b = x / multiplier;
-	long long a = x - (b * multiplier);
-	long long d = y / multiplier;
-	long long c = y - (d * multiplier);
+		N = (N / 2) + (N % 2);
+		// зсув для десяткової системи числення
+		long long multiplier = pow(10, N);
 
-	long long d0 = multiply(a, c);
-	long long d1 = multiply(a + b, c + d);
-	long long d2 = multiply(b, d);
+		long long b = x / multiplier;
+		long long a = x - (b * multiplier);
+		long long d = y / multiplier;
+		long long c = y - (d * multiplier);
 
-	// формула с(t)
-	return d0 + ((d1 - d0 - d2) * multiplier) + (d2 * (long long)(pow(10, 2 * N)));
+		long long d0 = multiply(a, c);
+		long long d1 = multiply(a + b, c + d);
+		long long d2 = multiply(b, d);
 
+		// формула с(t)
+		return d0 + ((d1 - d0 - d2) * multiplier) + (d2 * (long long)(pow(10, 2 * N)));
+	}
 }
 int main()
 {
@@ -57,6 +59,10 @@ int main()
     cout << "b: "; cin >> b;
     cout << "c: "; cin >> c;
     cout << "d: "; cin >> d;
-    cout << "r = " << (a * c - b * d) << endl;
-    cout << "s = " << (a * d + b * c) << "i" << endl;
+	cout << "Результат звичайного множення: " << endl;
+	cout << "r = " << (a * c - b * d) << endl;
+	cout << "s = " << (a * d + b * c) << "i" << endl;
+	cout << "Результат множення за рекурсивним алгоритмом Карацуби: " << endl;
+    cout << "r = " << multiply(a, c) - multiply(b, d) << endl;
+    cout << "s = " << multiply(a, d) + multiply(b, c) << "i" << endl;
 }
